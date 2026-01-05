@@ -78,6 +78,31 @@ with game_col:
     # --- TARKISTUS ---
     if st.button("Tarkista ratkaisu", type="primary"):
         
+        # Tässä oli todennäköisesti virheen kohta aiemmin.
+        # Varmista, että tämä sanakirja on kopioitu kokonaan sulkeineen päivineen:
         vastaukset = {
             "Matti": {"vuosi": m_v, "ammatti": m_a, "paikka": m_p},
             "Liisa": {"vuosi": l_v, "ammatti": l_a, "paikka": l_p},
+            "Kalle": {"vuosi": k_v, "ammatti": k_a, "paikka": k_p},
+            "Anna":  {"vuosi": a_v, "ammatti": a_a, "paikka": a_p}
+        }
+
+        oikein_lkm = 0
+        virheet = []
+
+        for nimi, tiedot in oikeat.items():
+            kayttajan_tiedot = vastaukset[nimi]
+            if (kayttajan_tiedot["vuosi"] == tiedot["vuosi"] and 
+                kayttajan_tiedot["ammatti"] == tiedot["ammatti"] and 
+                kayttajan_tiedot["paikka"] == tiedot["paikka"]):
+                oikein_lkm += 1
+            else:
+                virheet.append(nimi)
+
+        if oikein_lkm == 4:
+            st.success("🏆 MAHTAVAA! Ratkaisit sukututkijan logiikkapähkinän täydellisesti!")
+            st.balloons()
+        else:
+            st.error(f"Sait oikein {oikein_lkm} / 4 henkilöä.")
+            if virheet:
+                st.warning(f"Tarkista seuraavien henkilöiden tiedot: {', '.join(virheet)}")
