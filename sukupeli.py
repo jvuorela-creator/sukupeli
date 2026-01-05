@@ -43,7 +43,7 @@ with img_col:
     st.write("### Alkuperäislähde")
     # Tässä käytetään Wikimedia Commonsin kuvaa esimerkkinä.
     # Voit vaihtaa URL-osoitteen tilalle paikallisen tiedostonimen, esim: "kirkonkirja.jpg"
-    kuva_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Mikael_Agricola_signature.jpg/320px-Mikael_Agricola_signature.jpg"
+    kuva_url = "https://upload.wikimedia.org/wikipedia/commons/b/b5/The_Crazy_Monday_-_church_register_from_Os_parish.jpg"
     
     st.image(kuva_url, caption="Ote vanhasta asiakirjasta", use_container_width=True)
     st.info("💡 Vinkki: Joskus vastaus löytyy tutkimalla alkuperäislähdettä tarkasti! (Tämä on vain kuvituskuva)")
@@ -106,3 +106,4 @@ with game_col:
             st.error(f"Sait oikein {oikein_lkm} / 4 henkilöä.")
             if virheet:
                 st.warning(f"Tarkista seuraavien henkilöiden tiedot: {', '.join(virheet)}")
+
